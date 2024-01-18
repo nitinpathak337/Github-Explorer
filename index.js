@@ -168,13 +168,8 @@ const fetchUser = async () => {
     }
     try {
       const userDetailsResposne = await fetch(
-        `https://api.github.com/users/${searchInputEl.value}`,
-        {
-          headers: {
-            Authorization: "Bearer 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",
-          },
-        }
-      );
+        `https://api.github.com/users/${searchInputEl.value}`);
+   
 
       if (userDetailsResposne.status === 200) {
         const userDetailsData = await userDetailsResposne.json();
@@ -257,13 +252,7 @@ const fetchSearchedRepo = async (setCurrentPageToOne = true) => {
     }
     try {
       const filteredRepoResponse = await fetch(
-        `https://api.github.com/search/repositories?q=${repoSearchEl.value}+user:${searchInputEl.value}&per_page=${itemsPerPage}&page=${currentPage}`,
-        {
-          headers: {
-            Authorization: "Bearer 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",
-          },
-        }
-      );
+        `https://api.github.com/search/repositories?q=${repoSearchEl.value}+user:${searchInputEl.value}&per_page=${itemsPerPage}&page=${currentPage}`);
       if (filteredRepoResponse.status === 200) {
         const filteredRepoData = await filteredRepoResponse.json();
         totalPages = Math.ceil(filteredRepoData.total_count / itemsPerPage);
